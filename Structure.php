@@ -115,7 +115,7 @@ class Structure implements \JsonSerializable, \ArrayAccess, \IteratorAggregate, 
      *
      * @since   2.0
      */
-    public function jsonSerialize()
+    public function jsonSerialize() : mixed
     {
         return $this->data;
     }
@@ -340,7 +340,7 @@ class Structure implements \JsonSerializable, \ArrayAccess, \IteratorAggregate, 
      *
      * @since   2.0
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset) : bool
     {
         return $this->get($offset) !== null;
     }
@@ -354,7 +354,7 @@ class Structure implements \JsonSerializable, \ArrayAccess, \IteratorAggregate, 
      *
      * @since   2.0
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset) : mixed
     {
         return $this->get($offset);
     }
@@ -369,7 +369,7 @@ class Structure implements \JsonSerializable, \ArrayAccess, \IteratorAggregate, 
      *
      * @since   2.0
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value) : void
     {
         $this->set($offset, $value);
     }
@@ -383,7 +383,7 @@ class Structure implements \JsonSerializable, \ArrayAccess, \IteratorAggregate, 
      *
      * @since   2.0
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset) : void
     {
         $this->set($offset, null);
     }
@@ -746,7 +746,7 @@ class Structure implements \JsonSerializable, \ArrayAccess, \IteratorAggregate, 
      * @see     IteratorAggregate::getIterator()
      * @since   2.1
      */
-    public function getIterator()
+    public function getIterator() : \RecursiveArrayIterator
     {
         return new \RecursiveArrayIterator($this->data);
     }
@@ -759,7 +759,7 @@ class Structure implements \JsonSerializable, \ArrayAccess, \IteratorAggregate, 
      * @link    http://php.net/manual/en/countable.count.php
      * @since   2.1
      */
-    public function count()
+    public function count() : int
     {
         return \count($this->data);
     }
